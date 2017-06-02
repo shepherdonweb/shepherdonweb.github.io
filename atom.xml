@@ -4,7 +4,7 @@
   <title><![CDATA[The Shepherd's Blog]]></title>
   <link href="http://shepherdonweb.github.io/atom.xml" rel="self"/>
   <link href="http://shepherdonweb.github.io/"/>
-  <updated>2017-06-02T07:20:11+02:00</updated>
+  <updated>2017-06-02T07:24:10+02:00</updated>
   <id>http://shepherdonweb.github.io/</id>
   <author>
     <name><![CDATA[The Shepherd]]></name>
@@ -18,10 +18,10 @@
     <link href="http://shepherdonweb.github.io/blog/2017/06/01/hello-world/"/>
     <updated>2017-06-01T20:50:51+02:00</updated>
     <id>http://shepherdonweb.github.io/blog/2017/06/01/hello-world</id>
-    <content type="html"><![CDATA[<p>Hello everyone!
-I&rsquo;ve created this blog site because I&rsquo;d like to share with you with my knowledge.
-I&rsquo;ve always wanted to have a blog but I didn&rsquo;t have time or motivation ;)
-Most of the time I work with Scala/Slick/Akka but sometimes I work with JavaScriptas well as other frontend stuff like Angular, React, and so on&hellip;.
+    <content type="html"><![CDATA[<p>Hello everyone!<br/>
+I&rsquo;ve created this blog site because I&rsquo;d like to share with you with my knowledge.<br/>
+I&rsquo;ve always wanted to have a blog but I didn&rsquo;t have time or motivation ;)<br/>
+Most of the time I work with Scala/Slick/Akka but sometimes I work with JavaScriptas well as other frontend stuff like Angular, React, and so on&hellip;. <br/>
 Recently I&rsquo;ve turned into a bit of DevOps, like CI/CD, Docker, Ansible and many many other cool tools and frameworks.
 So let&rsquo;s get started&hellip;</p>
 ]]></content>
