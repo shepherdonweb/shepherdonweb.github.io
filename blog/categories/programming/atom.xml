@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming, | The Shepherd's Blog]]></title>
   <link href="http://shepherdonweb.github.io/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://shepherdonweb.github.io/"/>
-  <updated>2017-06-03T16:16:26+02:00</updated>
+  <updated>2017-06-03T18:50:37+02:00</updated>
   <id>http://shepherdonweb.github.io/</id>
   <author>
     <name><![CDATA[Shepherd]]></name>
@@ -27,7 +27,7 @@ Don&rsquo;t worry it&rsquo;s just looks scary :)</p>
 
 <p>A Monoid is some concept coming from Category Theory but we don&rsquo;t need to know it to be able to use it effectively.</p>
 
-<p>Actually everyone uses them in a day-to-day work like concatenating <strong>Lists</strong> or adding two <strong>Ints</strong>.</p>
+<p>Actually everyone uses them in a day-to-day work like concatenating <code><strong>List&rsquo;s</strong></code> or adding two <code><strong>Int&rsquo;s</strong></code>.</p>
 
 <p>Ok so what a Monoid really is?</p>
 
@@ -84,6 +84,11 @@ Don&rsquo;t worry it&rsquo;s just looks scary :)</p>
 
     sum(strings, stringMonoid) // results in "Scala is nice"
 </code></pre>
+
+<p>The use of: sum method could be even simpler if we have used <code>Implicits</code>. But let&rsquo;s not complicate it right now. We&rsquo;ll take care of <code>Implicit</code> in the next posts.</p>
+
+<p>Ok, so what is so important with all these Monoids?<br/>
+Is adding two Integers or Strings a good motivation for using it?</p>
 ]]></content>
   </entry>
   

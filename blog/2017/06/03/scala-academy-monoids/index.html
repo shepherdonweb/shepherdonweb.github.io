@@ -106,7 +106,7 @@ Don&rsquo;t worry it&rsquo;s just looks scary :)</p>
 
 <p>A Monoid is some concept coming from Category Theory but we don&rsquo;t need to know it to be able to use it effectively.</p>
 
-<p>Actually everyone uses them in a day-to-day work like concatenating <strong>Lists</strong> or adding two <strong>Ints</strong>.</p>
+<p>Actually everyone uses them in a day-to-day work like concatenating <code><strong>List&rsquo;s</strong></code> or adding two <code><strong>Int&rsquo;s</strong></code>.</p>
 
 <p>Ok so what a Monoid really is?</p>
 
@@ -196,6 +196,11 @@ Don&rsquo;t worry it&rsquo;s just looks scary :)</p>
 </span><span class='line'><span class="n">sum</span><span class="o">(</span><span class="n">strings</span><span class="o">,</span> <span class="n">stringMonoid</span><span class="o">)</span> <span class="c1">// results in &quot;Scala is nice&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p>The use of: sum method could be even simpler if we have used <code>Implicits</code>. But let&rsquo;s not complicate it right now. We&rsquo;ll take care of <code>Implicit</code> in the next posts.</p>
+
+<p>Ok, so what is so important with all these Monoids?<br/>
+Is adding two Integers or Strings a good motivation for using it?</p>
 </div>
 
 
