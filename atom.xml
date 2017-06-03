@@ -4,14 +4,121 @@
   <title><![CDATA[The Shepherd's Blog]]></title>
   <link href="http://shepherdonweb.github.io/atom.xml" rel="self"/>
   <link href="http://shepherdonweb.github.io/"/>
-  <updated>2017-06-02T21:01:32+02:00</updated>
+  <updated>2017-06-03T16:09:44+02:00</updated>
   <id>http://shepherdonweb.github.io/</id>
   <author>
-    <name><![CDATA[The Shepherd]]></name>
+    <name><![CDATA[Shepherd]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Scala Academy - Monoids]]></title>
+    <link href="http://shepherdonweb.github.io/blog/2017/06/03/scala-academy-monoids/"/>
+    <updated>2017-06-03T15:12:04+02:00</updated>
+    <id>http://shepherdonweb.github.io/blog/2017/06/03/scala-academy-monoids</id>
+    <content type="html"><![CDATA[<h3>Scala Academy - Monoids</h3>
+
+<p>To be good at what we&rsquo;re doing with Scala, we need to get to know some stuff from Functional Programming world.</p>
+
+<p>The first one and the easiest seems to be - a <strong>Monoid</strong>.
+Don&rsquo;t worry it&rsquo;s just looks scary :)</p>
+
+<p>A Monoid is some concept coming from Category Theory but we don&rsquo;t need to know it to be able to use it effectively.</p>
+
+<p>Actually everyone uses them in a day-to-day work like concatenating <strong>Lists</strong> or adding two <strong>Ints</strong>.</p>
+
+<p>Ok so what a Monoid really is?</p>
+
+<p><strong>It&rsquo;s a type that has:</strong>
+1. a value that doesn&rsquo;t change other values
+2. an operation that takes two arguments of a given type and returns a value of that type.</p>
+
+<p>We can present Monoid in Scala like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">trait</span> <span class="nc">Monoid</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">def</span> <span class="n">id</span><span class="k">:</span> <span class="kt">A</span>
+</span><span class='line'>    <span class="k">def</span> <span class="n">op</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">A</span><span class="o">,</span> <span class="n">b</span><span class="k">:</span> <span class="kt">B</span><span class="o">)</span><span class="k">:</span> <span class="kt">A</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Simple, right?</p>
+
+<p>Let&rsquo;s try to use it in some real-world problem. Let&rsquo;s assume we want to have a Monoid for adding two Integer types.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">val</span> <span class="n">intMonoid</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Monoid</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">def</span> <span class="n">id</span> <span class="k">=</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="k">def</span> <span class="n">op</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">b</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>or adding two Strings:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">val</span> <span class="n">stringMonoid</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Monoid</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">def</span> <span class="n">id</span> <span class="k">=</span> <span class="s">&quot;&quot;</span>
+</span><span class='line'>    <span class="k">def</span> <span class="n">op</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">b</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>or even for concatenating two Lists:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">val</span> <span class="n">listMonoid</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Monoid</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">def</span> <span class="n">id</span> <span class="k">=</span> <span class="nc">Nil</span>
+</span><span class='line'>    <span class="k">def</span> <span class="n">op</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">],</span> <span class="n">b</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">B</span><span class="o">])</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="k">=</span> <span class="n">a</span> <span class="o">++</span> <span class="n">b</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So having this we could try to write a method to sum all the items from the list:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">def</span> <span class="n">sum</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">xs</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">],</span> <span class="n">m</span><span class="k">:</span> <span class="kt">Monoid</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">foldLeft</span><span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="n">id</span><span class="o">)(</span><span class="n">m</span><span class="o">.</span><span class="n">op</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//and then</span>
+</span><span class='line'><span class="k">val</span> <span class="n">numbers</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">sum</span><span class="o">(</span><span class="n">numbers</span><span class="o">,</span> <span class="n">intMonoid</span><span class="o">)</span> <span class="c1">// returns a result = 6</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//the same with Strings</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">val</span> <span class="n">strings</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="s">&quot;Scala &quot;</span><span class="o">,</span> <span class="s">&quot;is &quot;</span><span class="o">,</span> <span class="s">&quot;nice!&quot;</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">sum</span><span class="o">(</span><span class="n">strings</span><span class="o">,</span> <span class="n">stringMonoid</span><span class="o">)</span> <span class="c1">// results in &quot;Scala is nice&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Let's Get the Ball Rolling...!]]></title>

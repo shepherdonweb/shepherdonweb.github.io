@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Scala, | The Shepherd's Blog]]></title>
+  <link href="http://shepherdonweb.github.io/blog/categories/scala/atom.xml" rel="self"/>
+  <link href="http://shepherdonweb.github.io/"/>
+  <updated>2017-06-03T16:09:44+02:00</updated>
+  <id>http://shepherdonweb.github.io/</id>
+  <author>
+    <name><![CDATA[Shepherd]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Scala Academy - Monoids]]></title>
+    <link href="http://shepherdonweb.github.io/blog/2017/06/03/scala-academy-monoids/"/>
+    <updated>2017-06-03T15:12:04+02:00</updated>
+    <id>http://shepherdonweb.github.io/blog/2017/06/03/scala-academy-monoids</id>
+    <content type="html"><![CDATA[<h3>Scala Academy - Monoids</h3>
+
+<p>To be good at what we&rsquo;re doing with Scala, we need to get to know some stuff from Functional Programming world.</p>
+
+<p>The first one and the easiest seems to be - a <strong>Monoid</strong>.
+Don&rsquo;t worry it&rsquo;s just looks scary :)</p>
+
+<p>A Monoid is some concept coming from Category Theory but we don&rsquo;t need to know it to be able to use it effectively.</p>
+
+<p>Actually everyone uses them in a day-to-day work like concatenating <strong>Lists</strong> or adding two <strong>Ints</strong>.</p>
+
+<p>Ok so what a Monoid really is?</p>
+
+<p><strong>It&rsquo;s a type that has:</strong>
+1. a value that doesn&rsquo;t change other values
+2. an operation that takes two arguments of a given type and returns a value of that type.</p>
+
+<p>We can present Monoid in Scala like this:</p>
+
+<pre><code class="scala">    trait Monoid[A] {
+        def id: A
+        def op(a: A, b: B): A
+    }
+</code></pre>
+
+<p>Simple, right?</p>
+
+<p>Let&rsquo;s try to use it in some real-world problem. Let&rsquo;s assume we want to have a Monoid for adding two Integer types.</p>
+
+<pre><code class="scala">    val intMonoid = new Monoid[Int] {
+        def id = 0
+        def op(a: Int, b: Int): Int = a + b
+    }
+</code></pre>
+
+<p>or adding two Strings:
+<code>scala
+    val stringMonoid = new Monoid[A] {
+        def id = ""
+        def op(a: String, b: String): String = a + b
+    }
+</code></p>
+
+<p>or even for concatenating two Lists:
+<code>scala
+    val listMonoid[A] = new Monoid[A] {
+        def id = Nil
+        def op(a: List[A], b: List[B]): List[A] = a ++ b
+    }
+</code></p>
+
+<p>So having this we could try to write a method to sum all the items from the list:</p>
+
+<pre><code class="scala">    def sum[A](xs: List[A], m: Monoid[A]): A = xs.foldLeft(m.id)(m.op)
+
+    //and then
+    val numbers = List(1, 2, 3)
+
+    sum(numbers, intMonoid) // returns a result = 6
+
+    //the same with Strings
+
+    val strings = List("Scala ", "is ", "nice!")
+
+    sum(strings, stringMonoid) // results in "Scala is nice"
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
